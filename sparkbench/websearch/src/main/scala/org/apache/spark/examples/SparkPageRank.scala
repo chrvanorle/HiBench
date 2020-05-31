@@ -43,7 +43,7 @@ object SparkPageRank {
       System.err.println("Usage: SparkPageRank <input_file> <output_filename> [<iter>]")
       System.exit(1)
     }
-    val appName = System.getProperty("spark-app-name")
+    val appName = System.getenv().get("SPARK_APP_NAME")
     val sparkConf = new SparkConf().setAppName(s"$appName-ScalaPageRank")
     val input_path = args(0)
     val output_path = args(1)
