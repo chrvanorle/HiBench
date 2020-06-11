@@ -86,7 +86,8 @@ object RunBench {
     }
 
     // defind streaming context
-    val conf = new SparkConf().setMaster(config.master).setAppName(config.benchName)
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setMaster(config.master).setAppName(s"$appName-$config.benchName")
     val ssc = new StreamingContext(conf, Milliseconds(config.batchInterval))
     ssc.checkpoint(config.checkpointPath)
 

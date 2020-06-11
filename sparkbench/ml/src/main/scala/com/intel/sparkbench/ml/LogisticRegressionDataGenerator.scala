@@ -64,7 +64,8 @@ object LogisticRegressionDataGenerator {
   }
 
   def main(args: Array[String]) {
-    val conf = new SparkConf().setAppName("LogisticRegressionDataGenerator")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-LogisticRegressionDataGenerator")
     val sc = new SparkContext(conf)
 
     var outputPath = ""

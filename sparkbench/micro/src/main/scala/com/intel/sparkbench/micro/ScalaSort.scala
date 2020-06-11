@@ -36,7 +36,8 @@ object ScalaSort{
       )
       System.exit(1)
     }
-    val sparkConf = new SparkConf().setAppName("ScalaSort")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val sparkConf = new SparkConf().setAppName(s"$appName-ScalaSort")
     val sc = new SparkContext(sparkConf)
 
     val parallel = sc.getConf.getInt("spark.default.parallelism", sc.defaultParallelism)

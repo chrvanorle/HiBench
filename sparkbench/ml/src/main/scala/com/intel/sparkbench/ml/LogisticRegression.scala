@@ -32,9 +32,9 @@ object LogisticRegression {
     if (args.length == 1) {
       inputPath = args(0)
     }
-
+	val appName = System.getenv().get("SPARK_APP_NAME")
     val conf = new SparkConf()
-	.setAppName("LogisticRegressionWithLBFGS")
+	.setAppName(s"$appName-LogisticRegressionWithLBFGS")
     val sc = new SparkContext(conf)
 
     // $example on$

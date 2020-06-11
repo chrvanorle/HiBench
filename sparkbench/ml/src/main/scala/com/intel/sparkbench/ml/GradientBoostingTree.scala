@@ -37,9 +37,9 @@ object GradientBoostingTree {
       inputPath = args(0)
       numIterations = args(1).toInt
     }
-
+	val appName = System.getenv().get("SPARK_APP_NAME")
     val conf = new SparkConf()
-        .setAppName("GradientBoostingTree")
+        .setAppName(s"$appName-GradientBoostingTree")
     val sc = new SparkContext(conf)
 
     // Load and parse the data file.

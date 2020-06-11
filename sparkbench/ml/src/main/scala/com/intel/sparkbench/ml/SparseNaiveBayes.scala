@@ -74,7 +74,8 @@ object SparseNaiveBayes {
   }
 
   def run(params: Params) {
-    val conf = new SparkConf().setAppName(s"SparseNaiveBayes with $params")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-SparseNaiveBayes with $params")
     val sc = new SparkContext(conf)
 
 //    Logger.getRootLogger.setLevel(Level.WARN)

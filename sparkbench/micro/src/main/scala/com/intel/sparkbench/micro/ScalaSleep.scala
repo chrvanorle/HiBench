@@ -27,7 +27,8 @@ object ScalaSleep{
       )
       System.exit(1)
     }
-    val sparkConf = new SparkConf().setAppName("ScalaSleep")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val sparkConf = new SparkConf().setAppName(s"$appName-ScalaSleep")
     val sc = new SparkContext(sparkConf)
 
     val parallel = sc.getConf.getInt("spark.default.parallelism", sc.defaultParallelism)

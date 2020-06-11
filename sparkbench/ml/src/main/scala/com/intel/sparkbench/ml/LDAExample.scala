@@ -66,8 +66,9 @@ object LDAExample {
   }
   
   def run(params: Params): Unit = {
+	val appName = System.getenv().get("SPARK_APP_NAME")
     val conf = new SparkConf()
-        .setAppName(s"LDA Example with $params")
+        .setAppName(s"$appName-LDA Example with $params")
         .set("spark.driver.maxResultSize", params.maxResultSize)
     val sc = new SparkContext(conf)
 

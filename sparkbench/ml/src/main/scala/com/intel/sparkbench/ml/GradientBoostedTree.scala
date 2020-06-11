@@ -69,7 +69,8 @@ object GradientBoostedTree {
   }
 
   def run(params: Params): Unit = {
-    val conf = new SparkConf().setAppName(s"Gradient Boosted Tree with $params")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-Gradient Boosted Tree with $params")
     val sc = new SparkContext(conf)
 
     val dataPath = params.dataPath

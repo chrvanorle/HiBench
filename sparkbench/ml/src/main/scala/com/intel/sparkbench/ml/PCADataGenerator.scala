@@ -64,7 +64,8 @@ object PCADataGenerator {
   }
 
   def main(args: Array[String]) {
-    val conf = new SparkConf().setAppName("PCADataGenerator")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-PCADataGenerator")
     val sc = new SparkContext(conf)
 
     var outputPath = ""

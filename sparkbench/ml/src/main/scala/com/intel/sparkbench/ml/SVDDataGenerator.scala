@@ -37,7 +37,8 @@ object SVDDataGenerator {
   }
 
   def main(args: Array[String]) {
-    val conf = new SparkConf().setAppName("SVDDataGenerator")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-SVDDataGenerator")
     val sc = new SparkContext(conf)
 
     var outputPath = ""

@@ -71,11 +71,12 @@ object NWeight extends Serializable{
     if(!disableKryo) {
       System.setProperty("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
     }
+	val appName = System.getenv().get("SPARK_APP_NAME")
     val sparkConf = new SparkConf()
     if (model.toLowerCase == "graphx") 
-      sparkConf.setAppName("NWeightGraphX")
+      sparkConf.setAppName(s"$appName-NWeightGraphX")
     else
-      sparkConf.setAppName("NWeightPregel")
+      sparkConf.setAppName(s"$appName-NWeightPregel")
     val sc = new SparkContext(sparkConf)
 
     if (model.toLowerCase == "graphx") {

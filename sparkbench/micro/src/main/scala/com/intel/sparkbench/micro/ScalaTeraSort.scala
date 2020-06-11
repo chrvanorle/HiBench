@@ -41,7 +41,8 @@ object ScalaTeraSort {
       )
       System.exit(1)
     }
-    val sparkConf = new SparkConf().setAppName("ScalaTeraSort")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val sparkConf = new SparkConf().setAppName(s"$appName-ScalaTeraSort")
     val sc = new SparkContext(sparkConf)
     val io = new IOCommon(sc)
 

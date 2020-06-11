@@ -57,7 +57,8 @@ object LinearRegression {
   }
    
   def run(params: Params): Unit = {
-    val conf = new SparkConf().setAppName(s"LinearRegressionWithSGD with $params")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-LinearRegressionWithSGD with $params")
     val sc = new SparkContext(conf)
     
     val dataPath = params.dataPath

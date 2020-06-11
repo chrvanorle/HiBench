@@ -33,7 +33,8 @@ object ScalaSparkSQLBench{
     }
     val workload_name = args(0)
     val sql_file = args(1)
-    val sparkConf = new SparkConf().setAppName(workload_name)
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val sparkConf = new SparkConf().setAppName(s"$appName-$workload_name")
     val sc = new SparkContext(sparkConf)
     val hc = new HiveContext(sc)
 

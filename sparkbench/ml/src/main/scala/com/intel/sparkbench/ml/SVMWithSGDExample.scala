@@ -61,7 +61,8 @@ object SVMWithSGDExample {
 
   def run(params: Params): Unit = {
 
-    val conf = new SparkConf().setAppName(s"SVM with $params")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-SVM with $params")
     val sc = new SparkContext(conf)
 
     val dataPath = params.dataPath

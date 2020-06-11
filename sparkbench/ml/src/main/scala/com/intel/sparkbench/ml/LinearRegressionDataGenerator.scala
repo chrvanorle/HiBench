@@ -75,7 +75,8 @@ object LinearRegressionDataGenerator {
   }
 
   def main(args: Array[String]) {
-    val conf = new SparkConf().setAppName("LinearRegressionDataGenerator")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-LinearRegressionDataGenerator")
     val sc = new SparkContext(conf)
 
     var outputPath = ""

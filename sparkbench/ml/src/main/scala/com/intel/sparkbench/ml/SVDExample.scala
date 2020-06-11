@@ -65,9 +65,9 @@ object SVDExample {
   }
 
   def run(params: Params): Unit = {
-
+	val appName = System.getenv().get("SPARK_APP_NAME")
     val conf = new SparkConf()
-        .setAppName(s"SVD with $params")
+        .setAppName(s"$appName-SVD with $params")
         .set("spark.driver.maxResultSize", params.maxResultSize)
     val sc = new SparkContext(conf)
 

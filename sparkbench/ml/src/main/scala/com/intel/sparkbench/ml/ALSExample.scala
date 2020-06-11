@@ -90,7 +90,8 @@ object ALSExample {
   }
 
   def run(params: Params): Unit = {
-    val conf = new SparkConf().setAppName(s"ALS with $params")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-ALS with $params")
     if (params.kryo) {
       conf.registerKryoClasses(Array(classOf[mutable.BitSet], classOf[Rating]))
         .set("spark.kryoserializer.buffer", "8m")

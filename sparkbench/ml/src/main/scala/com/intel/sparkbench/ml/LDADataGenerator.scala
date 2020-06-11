@@ -76,7 +76,8 @@ object LDADataGenerator {
   }
 
   def main(args: Array[String]) {
-    val conf = new SparkConf().setAppName("LDADataGenerator")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-LDADataGenerator")
     val sc = new SparkContext(conf)
 
     var outputPath = ""

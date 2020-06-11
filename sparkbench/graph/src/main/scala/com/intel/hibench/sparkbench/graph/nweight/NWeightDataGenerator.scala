@@ -33,7 +33,8 @@ object NWeightDataGenerator {
   val MAX_ID: Int = 2401080
 
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("NWeight-DataGeneration")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-NWeight-DataGeneration")
     val sc = new SparkContext(conf)
 
     var modelPath = ""

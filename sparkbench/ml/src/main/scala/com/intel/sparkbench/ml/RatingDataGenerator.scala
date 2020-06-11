@@ -30,7 +30,8 @@ import org.apache.spark.mllib.linalg.{Vectors, Vector}
 object RatingDataGenerator {
 
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("RatingDataGeneration")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-RatingDataGeneration")
     val sc = new SparkContext(conf)
 
     var outputPath = ""

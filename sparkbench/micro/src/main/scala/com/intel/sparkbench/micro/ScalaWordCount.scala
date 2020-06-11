@@ -31,7 +31,8 @@ object ScalaWordCount{
       )
       System.exit(1)
     }
-    val sparkConf = new SparkConf().setAppName("ScalaWordCount")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val sparkConf = new SparkConf().setAppName(s"$appName-ScalaWordCount")
     val sc = new SparkContext(sparkConf)
 
     val io = new IOCommon(sc)

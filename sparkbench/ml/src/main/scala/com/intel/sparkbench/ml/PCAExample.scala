@@ -37,9 +37,9 @@ object PCAExample {
       inputPath = args(0)
       maxResultSize = args(1)
     }
-
+	val appName = System.getenv().get("SPARK_APP_NAME")
     val conf = new SparkConf()
-        .setAppName("PCAExample")
+        .setAppName(s"$appName-PCAExample")
         .set("spark.driver.maxResultSize", maxResultSize)
     val sc = new SparkContext(conf)
     

@@ -65,7 +65,8 @@ object SVMDataGenerator {
   }
 
   def main(args: Array[String]) {
-    val conf = new SparkConf().setAppName("SVMDataGenerator")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-SVMDataGenerator")
     val sc = new SparkContext(conf)
 
     var outputPath = ""

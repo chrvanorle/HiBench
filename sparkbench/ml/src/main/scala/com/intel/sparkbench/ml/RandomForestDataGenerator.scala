@@ -64,7 +64,8 @@ object RandomForestDataGenerator {
   }
 
   def main(args: Array[String]) {
-    val conf = new SparkConf().setAppName("RandomForestDataGenerator")
+	val appName = System.getenv().get("SPARK_APP_NAME")
+    val conf = new SparkConf().setAppName(s"$appName-RandomForestDataGenerator")
     val sc = new SparkContext(conf)
 
     var outputPath = ""
