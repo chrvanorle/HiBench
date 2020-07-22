@@ -28,7 +28,7 @@ function enter_bench(){		# declare the entrance of a workload
     assert $1 "Workload name not specified."
     assert $2 "Workload config file not specified."
     assert $3 "Current workload folder not specified."
-    export HIBENCH_CUR_WORKLOAD_NAME=$1
+    export HIBENCH_CUR_WORKLOAD_NAME=${SPARK_APP_NAME}-$1
     workload_config_file=$2
     workload_folder=$3
     shift 3
